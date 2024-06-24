@@ -221,8 +221,8 @@ thead th span.icon-arrow {
     margin-left: .5rem;
     transition: .2s ease-in-out;
   
-  /*added*/
-    transform: rotate(180deg); /* Default down arrow */
+  /*added
+    transform: rotate(180deg); // Default down arrow 
 
 }
 
