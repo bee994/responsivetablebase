@@ -32,7 +32,6 @@ function searchTable() {
 
 // 2. Sorting | Ordering data of HTML table
 
-/*redone*/
 table_headings.forEach((head, i) => {
     let sort_desc = true;
     head.onclick = () => {
@@ -56,7 +55,6 @@ table_headings.forEach((head, i) => {
     }
 })
 
-/*redone*/
 function sortTable(column, sort_desc) {
     [...table_rows].sort((a, b) => {
         let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
@@ -68,33 +66,3 @@ function sortTable(column, sort_desc) {
 }
 
 // The rest of your code remains the same.
-/*date new*/
-function sortTable(column, sort_asc) {
-    const tbody = document.querySelector('tbody');
-    const rowsArray = Array.from(table_rows);
-
-    rowsArray.sort((a, b) => {
-        let first_row = a.querySelectorAll('td')[column].textContent.trim().toLowerCase(),
-            second_row = b.querySelectorAll('td')[column].textContent.trim().toLowerCase();
-
-        // Handle numeric values
-        if (!isNaN(first_row) && !isNaN(second_row)) {
-            first_row = parseFloat(first_row);
-            second_row = parseFloat(second_row);
-        }
-
-        // Handle date values
-        const dateA = Date.parse(first_row);
-        const dateB = Date.parse(second_row);
-        if (!isNaN(dateA) && !isNaN(dateB)) {
-            first_row = dateA;
-            second_row = dateB;
-        }
-
-        if (first_row < second_row) return sort_asc ? -1 : 1;
-        if (first_row > second_row) return sort_asc ? 1 : -1;
-        return 0;
-    });
-
-    rowsArray.forEach(row => tbody.appendChild(row));
-}
